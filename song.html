@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/x-icon" href="Images/logo-music.avif">
     <title>Song Preview Test</title>
 </head>
 <body>
     <h1>Arijit singh song</h1>
-    <div id="song-list"></div>
+    <!-- <form action="">
+        <input type="text">
+        <button>submit</button>
+    </form> -->
+    <div id="song-list">
+
+    </div>
 
     <template id="song-template">
         <div class="song-card" style="border: 1px solid black; margin: 10px; padding: 10px;">
-            <h3 class="song-title"></h3>
+            <h3 class="song-title">Ashish</h3>
             <img class="song-artwork" src="" alt="artwork">
             <br><br>
             <audio controls class="song-audio">
@@ -21,9 +28,10 @@
     </template>
 
     <script>
+        
         async function fetchSongs() {
-            const artist = "Arijit Singh";
-            const url = `https://itunes.apple.com/search?term=${encodeURIComponent(artist)}&media=music&entity=song&limit=20`;
+            const search = "saiyaara ve saiyaara";
+            const url = `https://itunes.apple.com/search?term=${encodeURIComponent(search)}&media=music&entity=song&limit=5`;
             
             try {
                 const response = await fetch(url);
@@ -37,7 +45,7 @@
                 data.results.forEach((song, index) => {
                     const clone = template.content.cloneNode(true);
                     
-                    clone.querySelector('.song-title').textContent = `${song.trackName}`;
+                    clone.querySelector('.song-title').textContent = `${index+1}. ${song.trackName}`;
                     clone.querySelector('.song-artwork').src = song.artworkUrl100;
                     clone.querySelector('.song-audio').src = song.previewUrl;
 
@@ -47,7 +55,6 @@
                 console.error("Error:", error);
             }
         }
-
         fetchSongs();
     </script>
 </body>
