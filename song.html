@@ -8,10 +8,10 @@
 </head>
 <body>
     <h1>Arijit singh song</h1>
-    <!-- <form action="">
-        <input type="text">
-        <button>submit</button>
-    </form> -->
+    <form id="search-form" action="">
+        <input type="text" id="search-input" placeholder="Search for a song...">
+        <button type="submit">submit</button>
+    </form>
     <div id="song-list">
 
     </div>
@@ -28,9 +28,19 @@
     </template>
 
     <script>
-        
-        async function fetchSongs() {
-            const search = "saiyaara ve saiyaara";
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const search = searchInput.value.trim();
+            if (search) {
+                document.getElementById('song-list').innerHTML = '';
+                fetchSongs(search);
+            }
+        });
+
+        async function fetchSongs(search) {
             const url = `https://itunes.apple.com/search?term=${encodeURIComponent(search)}&media=music&entity=song&limit=5`;
             
             try {
@@ -41,6 +51,10 @@
                 const songList = document.getElementById('song-list');
                 const template = document.getElementById('song-template');
 
+                if (data.results.length === 0) {
+                    songList.innerHTML = '<p>No songs found</p>';
+                    return;
+                }
 
                 data.results.forEach((song, index) => {
                     const clone = template.content.cloneNode(true);
@@ -53,9 +67,12 @@
                 });
             } catch (error) {
                 console.error("Error:", error);
+                document.getElementById('song-list').innerHTML = '<p>Error fetching songs</p>';
             }
         }
-        fetchSongs();
+
+        const artist = "Arijit";
+        fetchSongs(artist);
     </script>
 </body>
 </html>
