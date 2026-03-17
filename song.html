@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Preview Test</title>
+</head>
+<body>
+    <h1>Arijit singh song</h1>
+    <div id="song-list"></div>
+
+    <template id="song-template">
+        <div class="song-card" style="border: 1px solid black; margin: 10px; padding: 10px;">
+            <h3 class="song-title"></h3>
+            <img class="song-artwork" src="" alt="artwork">
+            <br><br>
+            <audio controls class="song-audio">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </template>
+
+    <script>
+        async function fetchSongs() {
+            const artist = "Arijit Singh";
+            const url = `https://itunes.apple.com/search?term=${encodeURIComponent(artist)}&media=music&entity=song&limit=20`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log(data);
+                
+                const songList = document.getElementById('song-list');
+                const template = document.getElementById('song-template');
+
+
+                data.results.forEach((song, index) => {
+                    const clone = template.content.cloneNode(true);
+                    
+                    clone.querySelector('.song-title').textContent = `${song.trackName}`;
+                    clone.querySelector('.song-artwork').src = song.artworkUrl100;
+                    clone.querySelector('.song-audio').src = song.previewUrl;
+
+                    songList.appendChild(clone);
+                });
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+
+        fetchSongs();
+    </script>
+</body>
+</html>
