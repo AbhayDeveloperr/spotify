@@ -41,7 +41,7 @@
         });
 
         async function fetchSongs(search) {
-            const url = `https://itunes.apple.com/search?term=${encodeURIComponent(search)}&media=music&entity=song&limit=5`;
+            const url = `https://itunes.apple.com/search?term=${encodeURIComponent(search)}&media=music&entity=song&limit=15`;
             
             try {
                 const response = await fetch(url);
