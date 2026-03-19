@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="src/css/style.css">
     <title>Document</title>
 </head>
-<body>
+<body class="relative h-screen">
     <div class=" bg-[#C1E2FE]">
         <div class="container px-5">
             <div class="flex justify-center py-5">
@@ -19,83 +19,90 @@
                 <div class="absolute inset-y-0 flex items-center ps-3">
                     <svg class="w-6 h-6 pb-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                 </div>
-                <input type="search" id="search" class="block bg-white px-20 py-2 ps-9 bg-neutral-secondary-medium border-2 border-white rounded-4xl  text-heading  rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Search for Song, Artist" required />
+                <input type="search" id="search" class="block w-full bg-white px-20 py-2 ps-9 bg-neutral-secondary-medium border-2 border-white rounded-4xl text-heading  rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Search for Song, Artist" required />
             </div>
         </div>
 
     </div>
-    <div class="px-5 pt-7">
-        <p class="text-2xl font-semibold">Artists</p>
-        <div class="flex pt-4 pb-8 space-x-6 overflow-x-scroll whitespace-nowrap">
-            <div class="bg-[#7D5EEA] flex rounded-full py-2 px-2 cursor-pointer">
-                <img src="src/Images/Sidhu_Moose_Wala.jpg" class=" rounded-full w-10 " alt="">
-                <p class="px-2 pt-2 text-white text-sm  justify-center items-center">Sidhu Moosewala</p>
+    <div class="pt-7">
+        <p class="px-5 text-2xl font-semibold">Artists</p>
+        <div class="px-5 flex pt-4 pb-8 space-x-6 overflow-x-auto scroll-hide">
+            
+            <div class="bg-[#7D5EEA] flex rounded-full py-2 px-3 cursor-pointer items-center gap-2 flex-shrink-0 max-w-full">
+                <img src="src/Images/Sidhu_Moose_Wala.jpg" class="rounded-full w-10 h-10 object-cover" alt="">
+                <p class="text-white text-sm truncate max-w-[120px]">Sidhu Moosewala</p>
             </div>
-            <div class="bg-indigo-500 flex rounded-full py-2 px-2 cursor-pointer">
-                <img src="src/Images/arijit.webp" class=" rounded-full w-10 " alt="">
-                <p class="px-2 pt-2 text-white text-sm font-medium justify-center items-center">Arijit Singh</p>
+
+            <div class="bg-indigo-500 flex rounded-full py-2 px-3 cursor-pointer items-center gap-2 flex-shrink-0 max-w-full">
+                <img src="src/Images/arijit.webp" class="rounded-full w-10 h-10 object-cover" alt="">
+                <p class="text-white text-sm truncate max-w-[120px]">Arijit Singh</p>
             </div>
-            <div class="bg-indigo-500 flex rounded-full py-2 px-2 cursor-pointer">
-                <img src="src/Images/KK.jpg" class=" rounded-full w-10 " alt="">
-                <p class="px-2 pt-2 text-white text-sm font-medium justify-center items-center">KK</p>
+
+            <div class="bg-indigo-500 flex rounded-full py-2 px-3 cursor-pointer items-center gap-2 flex-shrink-0 max-w-full">
+                <img src="src/Images/KK.jpg" class="rounded-full w-10 h-10 object-cover" alt="">
+                <p class="text-white text-sm truncate max-w-[120px]">KK</p>
             </div>
-            <div class="bg-indigo-500 flex rounded-full py-2 px-2 cursor-pointer">
-                <img src="src/Images/Honey-Singhavif" class=" rounded-full w-10 " alt="">
-                <p class="px-2 pt-2 text-white text-sm font-medium justify-center items-center">Honey Singh</p>
+
+            <div class="bg-indigo-500 flex rounded-full py-2 px-3 cursor-pointer items-center gap-2 flex-shrink-0 max-w-full">
+                <img src="src/Images/Honey-Singhavif" class="rounded-full w-10 h-10 object-cover" alt="">
+                <p class="text-white text-sm truncate max-w-[120px]">Honey Singh</p>
             </div>
+
         </div>
-        <p class="text-2xl font-semibold">Trending</p>
-        <div id="song-list" class="pt-6 pb-20 flex space-x-4 overflow-x-scroll">
+        <p class="px-5 text-2xl font-semibold">Trending</p>
+        <div id="song-list" class="px-5 pt-6 pb-20 flex space-x-4 overflow-x-scroll">
             <template id="song-template">
                 <img class="song-artwork w-40 h-40 rounded-2xl cursor-pointer" src="https://placehold.co/140x135" class="cursor-pointer" alt="">
             </template>
         </div>
     </div>
-    <div class="px-5 flex bg-[#FBEEE5] py-2">
-        <div>
-            <img src="https://placehold.co/40x40" class="rounded-xl" alt="">
+    <div class="absolute bottom-0 w-full">
+        <div class="px-5 flex bg-[#FBEEE5] py-2">
+            <div>
+                <img src="https://placehold.co/40x40" class="rounded-xl" alt="">
+            </div>
+            <p class="text-sm pt-2 pl-2">Song Name</p>
+            <div class="px-6 pt-1">
+                <img src="src/Images/playing.gif" class="w-24" alt="">
+            </div>
+            <div class="flex absolute right-4">
+                <svg width="38px" height="35px" class="cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM15.224 13.0171C16.011 12.5674 16.011 11.4326 15.224 10.9829L10.7817 8.44446C10.0992 8.05446 9.25 8.54727 9.25 9.33333L9.25 14.6667C9.25 15.4527 10.0992 15.9455 10.7817 15.5555L15.224 13.0171Z" fill="#323232"/>
+                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#323232" stroke-width="2"/>
+                    <path d="M10.9 8.8L10.6577 8.66152C10.1418 8.36676 9.5 8.73922 9.5 9.33333L9.5 14.6667C9.5 15.2608 10.1418 15.6332 10.6577 15.3385L10.9 15.2L15.1 12.8C15.719 12.4463 15.719 11.5537 15.1 11.2L10.9 8.8Z" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg width="38px" height="35px" class="cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#323232" stroke-width="2"/>
+                    <path d="M14 9L14 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 9L10 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
         </div>
-        <p class="text-sm pt-2 pl-2">Song Name</p>
-        <div class="px-6 pt-1">
-            <img src="src/Images/playing.gif" class="w-24" alt="">
-        </div>
-        <div class="flex absolute right-4">
-            <svg width="38px" height="35px" class="cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM15.224 13.0171C16.011 12.5674 16.011 11.4326 15.224 10.9829L10.7817 8.44446C10.0992 8.05446 9.25 8.54727 9.25 9.33333L9.25 14.6667C9.25 15.4527 10.0992 15.9455 10.7817 15.5555L15.224 13.0171Z" fill="#323232"/>
-                <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#323232" stroke-width="2"/>
-                <path d="M10.9 8.8L10.6577 8.66152C10.1418 8.36676 9.5 8.73922 9.5 9.33333L9.5 14.6667C9.5 15.2608 10.1418 15.6332 10.6577 15.3385L10.9 15.2L15.1 12.8C15.719 12.4463 15.719 11.5537 15.1 11.2L10.9 8.8Z" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <svg width="38px" height="35px" class="cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#323232" stroke-width="2"/>
-                <path d="M14 9L14 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10 9L10 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-    </div>
-    <div class="px-5 py-7 flex space-x-21 absolute bottom-0">
-        <div class="flex text-sm gap-1 bg-[#C1E2FE] rounded-2xl px-2  cursor-pointer">
-            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M15 18H9" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <p>Home</p>
-        </div>
-        <div class="cursor-pointer">
-            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z" fill="#292D32"/>
-            <path opacity="0.4" d="M18.6695 2H16.7695C14.5895 2 13.4395 3.15 13.4395 5.33V7.23C13.4395 9.41 14.5895 10.56 16.7695 10.56H18.6695C20.8495 10.56 21.9995 9.41 21.9995 7.23V5.33C21.9995 3.15 20.8495 2 18.6695 2Z" fill="#292D32"/>
-            <path d="M18.6695 13.4302H16.7695C14.5895 13.4302 13.4395 14.5802 13.4395 16.7602V18.6602C13.4395 20.8402 14.5895 21.9902 16.7695 21.9902H18.6695C20.8495 21.9902 21.9995 20.8402 21.9995 18.6602V16.7602C21.9995 14.5802 20.8495 13.4302 18.6695 13.4302Z" fill="#292D32"/>
-            <path opacity="0.4" d="M7.24 13.4302H5.34C3.15 13.4302 2 14.5802 2 16.7602V18.6602C2 20.8502 3.15 22.0002 5.33 22.0002H7.23C9.41 22.0002 10.56 20.8502 10.56 18.6702V16.7702C10.57 14.5802 9.42 13.4302 7.24 13.4302Z" fill="#292D32"/>
-            </svg>
-        </div>
-        <div class="cursor-pointer">
-            <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" id="favourite-alt" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path id="primary" d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
-            </svg>
-        </div>
-        <div class="cursor-pointer">
-            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        <div class="px-5 py-7 flex justify-between">
+            <div class="flex text-sm gap-1 bg-[#C1E2FE] rounded-2xl px-2  cursor-pointer">
+                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M15 18H9" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <p>Home</p>
+            </div>
+            <div class="cursor-pointer">
+                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z" fill="#292D32"/>
+                <path opacity="0.4" d="M18.6695 2H16.7695C14.5895 2 13.4395 3.15 13.4395 5.33V7.23C13.4395 9.41 14.5895 10.56 16.7695 10.56H18.6695C20.8495 10.56 21.9995 9.41 21.9995 7.23V5.33C21.9995 3.15 20.8495 2 18.6695 2Z" fill="#292D32"/>
+                <path d="M18.6695 13.4302H16.7695C14.5895 13.4302 13.4395 14.5802 13.4395 16.7602V18.6602C13.4395 20.8402 14.5895 21.9902 16.7695 21.9902H18.6695C20.8495 21.9902 21.9995 20.8402 21.9995 18.6602V16.7602C21.9995 14.5802 20.8495 13.4302 18.6695 13.4302Z" fill="#292D32"/>
+                <path opacity="0.4" d="M7.24 13.4302H5.34C3.15 13.4302 2 14.5802 2 16.7602V18.6602C2 20.8502 3.15 22.0002 5.33 22.0002H7.23C9.41 22.0002 10.56 20.8502 10.56 18.6702V16.7702C10.57 14.5802 9.42 13.4302 7.24 13.4302Z" fill="#292D32"/>
+                </svg>
+            </div>
+            <div class="cursor-pointer">
+                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" id="favourite-alt" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path id="primary" d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+                </svg>
+            </div>
+            <div class="cursor-pointer">
+                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
         </div>
     </div>
      <script>
