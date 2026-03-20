@@ -7,49 +7,192 @@
     <link rel="stylesheet" href="src/css/output.css">
     <link rel="stylesheet" href="src/css/style.css">
 </head>
-<body class="bg-[#F5F5F5]">
+<body class="bg-[#F5F5F5] pb-32">
     <div>
-        <svg width="25px" height="25px" viewBox="0 0 1024 1024" fill="#000000" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <svg onclick="window.history.back()" width="25px" height="25px" viewBox="0 0 1024 1024" fill="#000000" class="icon cursor-pointer m-4" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z" fill="" />
         </svg>
-        <div class="flex justify-center py-10">
+        <div class="flex justify-center py-10 text-gray-600 tracking-wider">
             <p>Now Playing</p>
         </div>
         <div class="flex justify-center">
-            <img src="https://placehold.co/300x300" class="rounded-3xl" alt="">
+            <img id="song-artwork" src="https://placehold.co/300x300" class="rounded-3xl shadow-2xl w-72 h-72 object-cover" alt="">
         </div>
         <div class="flex justify-center pt-4">
-            <p class="font-bold">Song Name</p>
+            <p id="song-name" class="font-bold text-2xl text-center px-4">Song Name</p>
         </div>
         <div class="flex justify-center">
-            <p class="text-sm">by....</p>
+            <p id="song-artist" class="text-lg text-gray-500">Artist Name</p>
         </div>
     </div>
-    <div class="flex justify-center py-6">
-        <svg width="30px" height="50px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="previous">
-            <g id="previous_2">
-            <path id="Combined Shape" fill-rule="evenodd" clip-rule="evenodd" d="M28.9682 15.5438L39.257 8.52571C41.2485 7.16707 43.9486 8.59383 43.9486 11.0038V36.9158C43.9486 39.3272 41.249 40.7548 39.257 39.3958L20.2635 26.4382C18.5169 25.2492 18.5171 22.6726 20.2631 21.4817L26.9682 16.908V11.0064C26.9682 10.2023 26.0683 9.7271 25.4042 10.1802L6.43638 23.134C5.85532 23.5311 5.85532 24.3887 6.43618 24.7866L25.4038 37.7403C26.0683 38.1936 26.9682 37.7185 26.9682 36.9144V35.9744C26.9682 35.4221 27.4159 34.9744 27.9682 34.9744C28.5205 34.9744 28.9682 35.4221 28.9682 35.9744V36.9144C28.9682 39.3259 26.2685 40.7513 24.2762 39.3922L5.30706 26.4374C3.56509 25.2441 3.56509 22.6737 5.30824 21.4826L24.2766 8.52831C26.2685 7.16942 28.9682 8.59489 28.9682 11.0064V15.5438ZM26.9682 19.329V23.0024C26.9682 23.5547 27.4159 24.0024 27.9682 24.0024C28.5205 24.0024 28.9682 23.5547 28.9682 23.0024V17.9648L40.3841 10.1779C41.048 9.72496 41.9486 10.2009 41.9486 11.0038V36.9158C41.9486 37.7205 41.0482 38.1967 40.3842 37.7437L21.3892 24.785C20.8083 24.3898 20.8083 23.5308 21.3901 23.1339L26.9682 19.329Z" fill="#000000"/>
-            </g>
-            </g>
+    <div class="px-8 pt-8">
+        <div class="relative w-full h-1 bg-gray-300 rounded-full cursor-pointer" id="progress-container">
+            <div class="absolute top-0 left-0 h-full bg-blue-600 rounded-full" id="progress-bar" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-500 pt-2">
+            <p id="current-time">0:00</p>
+            <p id="duration">0:30</p>
+        </div>
+    </div>
+
+    <div class="flex justify-center py-8 gap-8 items-center">
+        <!-- Previous Button -->
+        <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" class="cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
+            <path d="M18.4142 6C18.1581 6 17.9125 6.10184 17.7314 6.2829L12 12.0143L6.26863 6.2829C6.08754 6.10184 5.84191 6 5.58579 6C5.0335 6 4.58579 6.44772 4.58579 7C4.58579 7.26522 4.69114 7.51957 4.87868 7.70711L11.3071 14.1355C11.6976 14.526 12.3308 14.526 12.7213 14.1355L19.1497 7.70711C19.3373 7.51957 19.4426 7.26522 19.4426 7C19.4426 6.44772 18.9949 6 18.4142 6Z" fill="currentColor" transform="rotate(90 12 12)"/>
         </svg>
-        <svg width="50px" height="50px" class="cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM15.224 13.0171C16.011 12.5674 16.011 11.4326 15.224 10.9829L10.7817 8.44446C10.0992 8.05446 9.25 8.54727 9.25 9.33333L9.25 14.6667C9.25 15.4527 10.0992 15.9455 10.7817 15.5555L15.224 13.0171Z" fill="#323232"/>
-            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#323232" stroke-width="2"/>
-            <path d="M10.9 8.8L10.6577 8.66152C10.1418 8.36676 9.5 8.73922 9.5 9.33333L9.5 14.6667C9.5 15.2608 10.1418 15.6332 10.6577 15.3385L10.9 15.2L15.1 12.8C15.719 12.4463 15.719 11.5537 15.1 11.2L10.9 8.8Z" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-       <svg width="50px" height="50px" class="cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#323232" stroke-width="2"/>
-            <path d="M14 9L14 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 9L10 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <svg width="30px" height="50px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="next">
-            <g id="next_2">
-            <path id="Combined Shape" fill-rule="evenodd" clip-rule="evenodd" d="M18.9792 32.3759L8.69035 39.3951C6.69889 40.7537 3.99878 39.3269 3.99878 36.917V11.005C3.99878 8.59361 6.69843 7.166 8.69028 8.52489L27.6843 21.4809C29.4304 22.672 29.4304 25.249 27.6843 26.4371L20.9792 31.0114V36.9144C20.9792 37.7185 21.8791 38.1937 22.5432 37.7406L41.5107 24.787C42.0938 24.3882 42.0938 23.5316 41.5112 23.1342L22.5436 10.1805C21.8791 9.72714 20.9792 10.2023 20.9792 11.0064V11.9464C20.9792 12.4987 20.5315 12.9464 19.9792 12.9464C19.4269 12.9464 18.9792 12.4987 18.9792 11.9464V11.0064C18.9792 8.59492 21.6789 7.16945 23.6711 8.52861L42.6387 21.4823C44.3845 22.6732 44.3845 25.2446 42.6391 26.4382L23.6707 39.3925C21.6789 40.7514 18.9792 39.3259 18.9792 36.9144V32.3759ZM18.9792 29.9548L7.56322 37.7429C6.89939 38.1958 5.99878 37.7199 5.99878 36.917V11.005C5.99878 10.2003 6.89924 9.72409 7.56321 10.1771L26.5573 23.1331C27.1391 23.53 27.1391 24.389 26.5582 24.7842L20.9792 28.5904V24.9184C20.9792 24.3661 20.5315 23.9184 19.9792 23.9184C19.4269 23.9184 18.9792 24.3661 18.9792 24.9184V29.9548Z" fill="#000000"/>
-            </g>
-            </g>
+        
+        <!-- Play/Pause Button -->
+        <div id="play-pause-btn" class="bg-white w-16 h-16 flex items-center justify-center rounded-full shadow-xl border border-gray-100 cursor-pointer transform hover:scale-110 active:scale-95 transition-all">
+            <svg id="play-icon" width="32px" height="32px" viewBox="0 0 24 24" fill="#2563EB" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5V19L19 12L8 5Z" fill="#2563EB"/>
+            </svg>
+            <svg id="pause-icon" class="hidden" width="32px" height="32px" viewBox="0 0 24 24" fill="#2563EB" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 19H10V5H6V19ZM14 5V19H18V5H14Z" fill="#2563EB"/>
+            </svg>
+        </div>
+
+        <!-- Next Button -->
+        <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" class="cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
+            <path d="M18.4142 6C18.1581 6 17.9125 6.10184 17.7314 6.2829L12 12.0143L6.26863 6.2829C6.08754 6.10184 5.84191 6 5.58579 6C5.0335 6 4.58579 6.44772 4.58579 7C4.58579 7.26522 4.69114 7.51957 4.87868 7.70711L11.3071 14.1355C11.6976 14.526 12.3308 14.526 12.7213 14.1355L19.1497 7.70711C19.3373 7.51957 19.4426 7.26522 19.4426 7C19.4426 6.44772 18.9949 6 18.4142 6Z" fill="currentColor" transform="rotate(-90 12 12)"/>
         </svg>
     </div>
+
+    <audio id="main-audio" src=""></audio>
+
+    <div class="fixed bottom-0 w-full bg-[#F5F5F5] border-t border-gray-100">
+        <div class="px-5 py-7 flex justify-between">
+            <div class="cursor-pointer" onclick="window.location.href='index.html'">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="cursor-pointer" onclick="window.location.href='song-list.html'">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z" fill="#292D32"/>
+                </svg>
+            </div>
+            <div class="cursor-pointer">
+                <svg fill="#000000" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 2;"></path></svg>
+            </div>
+            <div class="cursor-pointer">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Use URL parameters to get the unique Song ID
+        const urlParams = new URLSearchParams(window.location.search);
+        const songId = urlParams.get('id');
+
+        // Elements on the page
+        const audioPlayer = document.getElementById('main-audio');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        const progressBar = document.getElementById('progress-bar');
+        const progressContainer = document.getElementById('progress-container');
+        const currentTimeDisplay = document.getElementById('current-time');
+        const durationDisplay = document.getElementById('duration');
+
+        // Function to fetch song details and start playing
+        async function loadSongDetails(id) {
+            try {
+                const response = await fetch(`https://itunes.apple.com/lookup?id=${id}`);
+                const data = await response.json();
+                
+                if (data.results.length > 0) {
+                    const song = data.results[0];
+                    
+                    // Update text and images
+                    document.getElementById('song-name').textContent = song.trackName;
+                    document.getElementById('song-artist').textContent = song.artistName;
+                    
+                    const highResArtwork = song.artworkUrl100.replace('100x100bb', '600x600bb');
+                    document.getElementById('song-artwork').src = highResArtwork;
+                    
+                    // Load and play the audio
+                    audioPlayer.src = song.previewUrl;
+                    audioPlayer.play().catch(() => console.log("User interaction required to play"));
+                    
+                    updatePlayerIcons(true); // Song is playing, show play icon
+                } else {
+                    document.getElementById('song-name').textContent = "Song not found";
+                }
+            } catch (error) {
+                console.error("Error loading song details:", error);
+                document.getElementById('song-name').textContent = "Connection Error";
+            }
+        }
+
+        // Handle Play and Pause button click
+        playPauseBtn.onclick = function() {
+            if (!audioPlayer.src) return;
+
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                updatePlayerIcons(true);
+            } else {
+                audioPlayer.pause();
+                updatePlayerIcons(false);
+            }
+        };
+
+        // Update the progress bar while the song plays
+        audioPlayer.ontimeupdate = function() {
+            if (audioPlayer.duration) {
+                const percentage = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.style.width = percentage + "%";
+                currentTimeDisplay.textContent = formatTime(audioPlayer.currentTime);
+            }
+        };
+
+        // Show the total duration once the song data loads
+        audioPlayer.onloadedmetadata = function() {
+            durationDisplay.textContent = formatTime(audioPlayer.duration);
+        };
+
+        // When the song finishes playing
+        audioPlayer.onended = function() {
+            updatePlayerIcons(false);
+        };
+
+        // Skip to different parts of the song by clicking the progress bar
+        progressContainer.onclick = function(e) {
+            if (audioPlayer.duration) {
+                const rect = progressContainer.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = progressContainer.clientWidth;
+                audioPlayer.currentTime = (clickX / width) * audioPlayer.duration;
+            }
+        };
+
+        // Helper function to format time (e.g., 0:30)
+        function formatTime(seconds) {
+            const min = Math.floor(seconds / 60);
+            const sec = Math.floor(seconds % 60);
+            return min + ":" + (sec < 10 ? "0" + sec : sec);
+        }
+
+        // Switch between icons based on play state
+        function updatePlayerIcons(isPlaying) {
+            if (isPlaying) {
+                // As per request: Show play icon while playing
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            } else {
+                // As per request: Show pause icon while paused
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            }
+        }
+
+        // Load the song if the ID exists in the URL
+        if (songId) {
+            loadSongDetails(songId);
+        }
+    </script>
 </body>
 </html>

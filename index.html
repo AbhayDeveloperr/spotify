@@ -77,14 +77,14 @@
             </div>
         </div>
         <div class="px-5 py-7 flex justify-between">
-            <div class="flex text-sm gap-1 bg-[#C1E2FE] rounded-2xl px-2 cursor-pointer">
+            <div class="flex text-sm gap-1 bg-[#C1E2FE] rounded-2xl px-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
                     <path d="M15 18H9" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
                 <p>Home</p>
             </div>
-            <div class="cursor-pointer">
+            <div class="cursor-pointer" onclick="window.location.href='song-list.html'">
                 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z" fill="#292D32"/>
                 <path opacity="0.4" d="M18.6695 2H16.7695C14.5895 2 13.4395 3.15 13.4395 5.33V7.23C13.4395 9.41 14.5895 10.56 16.7695 10.56H18.6695C20.8495 10.56 21.9995 9.41 21.9995 7.23V5.33C21.9995 3.15 20.8495 2 18.6695 2Z" fill="#292D32"/>
@@ -104,18 +104,14 @@
         </div>
     </div>
      <script>
-        const searchForm = document.getElementById('search-form');
-        const searchInput = document.getElementById('search-input');
-
-        // searchForm.addEventListener('submit', (e) => {
-        //     e.preventDefault();
-        //     const search = searchInput.value.trim();
-        //     if (search) {
-        //         document.getElementById('song-list').innerHTML = '';
-        //         fetchSongs(search);
-        //     }
-        // });
-
+        //search request se hum get request bhejenge song-list.html page par
+        document.getElementById('search').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.target.value.trim()) {
+                const search = e.target.value.trim();
+                window.location.href = `song-list.html?query=${encodeURIComponent(search)}`;
+            }
+        });
+        
         async function fetchSongs(search) {
             const url = `https://itunes.apple.com/search?term=${encodeURIComponent(search)}&media=music&entity=song&limit=5`;
             
@@ -135,15 +131,21 @@
                 data.results.forEach((song, index) => {
                     const clone = template.content.cloneNode(true);
                     
-                    // clone.querySelector('.song-title').textContent = `${index+1}. ${song.trackName}`;
-                    clone.querySelector('.song-artwork').src = song.artworkUrl100;
-                    // clone.querySelector('.song-audio').src = song.previewUrl;
+                    const artwork = song.artworkUrl100.replace('100x100bb', '600x600bb');
+                    clone.querySelector('.song-artwork').src = artwork;
+                    clone.querySelector('.song-artwork').onclick = () => {
+                        goToPlayer(song.trackId);
+                    };
                     songList.appendChild(clone);
                 });
             } catch (error) {
                 console.error("Error:", error);
                 document.getElementById('song-list').innerHTML = '<p>Error fetching songs</p>';
             }
+        }
+
+        function goToPlayer(id) {
+            window.location.href = `single-song.html?id=${id}`;
         }
 
         const artist = "Arijit";

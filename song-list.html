@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="src/css/output.css">
     <link rel="stylesheet" href="src/css/style.css">
 </head>
-<body>
+<body class="bg-[#F5F5F5] pb-32">
     <div>
         <div class="relative pb-6 pt-6 px-2">
             <div class="absolute inset-y-0 flex items-center ps-3">
@@ -23,17 +23,68 @@
         </div>
     </div>
 
+    <div class="fixed bottom-0 w-full bg-[#F5F5F5]">
+        <div class="px-5 flex bg-[#FBEEE5] py-2">
+            <div>
+                <img src="https://placehold.co/40x40" class="rounded-xl" alt="">
+            </div>
+            <p class="text-sm pt-2 pl-2">Song Name</p>
+            <div class="px-6 pt-1">
+                <img src="src/Images/playing.gif" class="w-24" alt="">
+            </div>
+            <div class="flex absolute right-4">
+                <svg width="38px" height="35px" class="cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM15.224 13.0171C16.011 12.5674 16.011 11.4326 15.224 10.9829L10.7817 8.44446C10.0992 8.05446 9.25 8.54727 9.25 9.33333L9.25 14.6667C9.25 15.4527 10.0992 15.9455 10.7817 15.5555L15.224 13.0171Z" fill="#323232"/>
+                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#323232" stroke-width="2"/>
+                    <path d="M10.9 8.8L10.6577 8.66152C10.1418 8.36676 9.5 8.73922 9.5 9.33333L9.5 14.6667C9.5 15.2608 10.1418 15.6332 10.6577 15.3385L10.9 15.2L15.1 12.8C15.719 12.4463 15.719 11.5537 15.1 11.2L10.9 8.8Z" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg width="38px" height="35px" class="cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#323232" stroke-width="2"/>
+                    <path d="M14 9L14 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 9L10 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="px-5 py-7 flex justify-between">
+            <div class="cursor-pointer" onclick="window.location.href='index.html'">
+                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M15 18H9" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="flex text-sm gap-1 bg-[#C1E2FE] rounded-2xl px-2 cursor-pointer" onclick="window.location.href='song-list.html'">
+                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z" fill="#292D32"/>
+                <path opacity="0.4" d="M18.6695 2H16.7695C14.5895 2 13.4395 3.15 13.4395 5.33V7.23C13.4395 9.41 14.5895 10.56 16.7695 10.56H18.6695C20.8495 10.56 21.9995 9.41 21.9995 7.23V5.33C21.9995 3.15 20.8495 2 18.6695 2Z" fill="#292D32"/>
+                <path d="M18.6695 13.4302H16.7695C14.5895 13.4302 13.4395 14.5802 13.4395 16.7602V18.6602C13.4395 20.8402 14.5895 21.9902 16.7695 21.9902H18.6695C20.8495 21.9902 21.9995 20.8402 21.9995 18.6602V16.7602C21.9995 14.5802 20.8495 13.4302 18.6695 13.4302Z" fill="#292D32"/>
+                <path opacity="0.4" d="M7.24 13.4302H5.34C3.15 13.4302 2 14.5802 2 16.7602V18.6602C2 20.8502 3.15 22.0002 5.33 22.0002H7.23C9.41 22.0002 10.56 20.8502 10.56 18.6702V16.7702C10.57 14.5802 9.42 13.4302 7.24 13.4302Z" fill="#292D32"/>
+                </svg>
+                <p>Search</p>
+            </div>
+            <div class="cursor-pointer">
+                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" id="favourite-alt" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path id="primary" d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+                </svg>
+            </div>
+            <div class="cursor-pointer">
+                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
     <script>
         const resultsBox = document.getElementById('results-container');
+        const searchInput = document.getElementById('search');
 
         async function fetchSongs(q) {
-            resultsBox.innerHTML = '<p class="text-center py-4">Searching...</p>';
+            resultsBox.innerHTML = '<p class="text-center py-4 text-gray-500">Searching...</p>';
             try {
                 const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&entity=song&limit=20`);
                 const { results } = await res.json();
                 
                 resultsBox.innerHTML = results.length ? results.map(s => `
-                    <div class="flex items-center justify-between pb-2 hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center justify-between pb-2 hover:bg-gray-100 transition-colors p-2 rounded-xl cursor-pointer" onclick="goToPlayer('${s.trackId}')">
                         <div class="flex items-center">
                             <img src="${s.artworkUrl100}" class="rounded-lg w-12 h-12 object-cover shadow-sm">
                             <div class="pl-3">
@@ -44,17 +95,32 @@
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="#1C274C" class="cursor-pointer">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
                         </svg>
-                    </div>`).join('') : '<p class="text-center py-4">No results found.</p>';
+                    </div>`).join('') : '<p class="text-center py-4 text-gray-500">No results found.</p>';
             } catch (e) {
                 resultsBox.innerHTML = '<p class="text-center py-4 text-red-500">Failed to load songs.</p>';
             }
         }
 
-        document.getElementById('search').addEventListener('keydown', e => {
-            if (e.key === 'Enter' && e.target.value.trim()) fetchSongs(e.target.value);
+        function goToPlayer(id) {
+            window.location.href = `single-song.html?id=${id}`;
+        }
+
+        searchInput.addEventListener('keydown', e => {
+            if (e.key === 'Enter' && e.target.value.trim()) {
+                fetchSongs(e.target.value.trim());
+            }
         });
 
-        fetchSongs('trending hindi bollywood songs');
+        // Check for search term in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryTerm = urlParams.get('query');
+        
+        if (queryTerm) {
+            searchInput.value = queryTerm;
+            fetchSongs(queryTerm);
+        } else {
+            fetchSongs('trending hindi bollywood songs');
+        }
     </script>
 </body>
 </html>
