@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="src/Images/logo-withoutBG.png" type="image/x-icon">
     <title>songlist</title>
     <link rel="stylesheet" href="src/css/output.css">
     <link rel="stylesheet" href="src/css/style.css">
@@ -82,9 +83,10 @@
             try {
                 const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&entity=song&limit=20`);
                 const { results } = await res.json();
+                console.log(results)
                 
                 resultsBox.innerHTML = results.length ? results.map(s => `
-                    <div class="flex items-center justify-between pb-2 hover:bg-gray-100 transition-colors p-2 rounded-xl cursor-pointer" onclick="goToPlayer('${s.trackId}')">
+                    <div class="flex items-center justify-between pb-2 hover:bg-gray-100 transition-colors p-2 rounded-xl cursor-pointer" onclick="window.location.href='single-song.html?id=${s.trackId}'">
                         <div class="flex items-center">
                             <img src="${s.artworkUrl100}" class="rounded-lg w-12 h-12 object-cover shadow-sm">
                             <div class="pl-3">
@@ -99,10 +101,6 @@
             } catch (e) {
                 resultsBox.innerHTML = '<p class="text-center py-4 text-red-500">Failed to load songs.</p>';
             }
-        }
-
-        function goToPlayer(id) {
-            window.location.href = `single-song.html?id=${id}`;
         }
 
         searchInput.addEventListener('keydown', e => {

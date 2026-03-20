@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="src/Images/logo-withoutBG.png" type="image/x-icon">
     <title>Document</title>
     <link rel="stylesheet" href="src/css/output.css">
     <link rel="stylesheet" href="src/css/style.css">
@@ -110,7 +111,7 @@
                     document.getElementById('song-name').textContent = song.trackName;
                     document.getElementById('song-artist').textContent = song.artistName;
                     
-                    const highResArtwork = song.artworkUrl100.replace('100x100bb', '600x600bb');
+                    const highResArtwork = song.artworkUrl100.replace('100x100bb', '200x200bb');
                     document.getElementById('song-artwork').src = highResArtwork;
                     
                     // Load and play the audio
