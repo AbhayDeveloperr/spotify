@@ -13,8 +13,8 @@
         <svg onclick="window.history.back()" width="25px" height="25px" viewBox="0 0 1024 1024" fill="#000000" class="icon cursor-pointer m-4" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z" fill="" />
         </svg>
-        <div class="flex justify-center py-10 text-gray-600 tracking-wider">
-            <p>Now Playing</p>
+        <div class="flex justify-center pb-6 text-gray-600 tracking-wider">
+            <p>Now Playing..</p>
         </div>
         <div class="flex justify-center">
             <img id="song-artwork" src="https://placehold.co/300x300" class="rounded-3xl shadow-2xl w-72 h-72 object-cover" alt="">
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="flex justify-center py-8 gap-8 items-center">
+    <div class="flex justify-center py-6 gap-8 items-center">
         <!-- Previous Button -->
         <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" class="cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
             <path d="M18.4142 6C18.1581 6 17.9125 6.10184 17.7314 6.2829L12 12.0143L6.26863 6.2829C6.08754 6.10184 5.84191 6 5.58579 6C5.0335 6 4.58579 6.44772 4.58579 7C4.58579 7.26522 4.69114 7.51957 4.87868 7.70711L11.3071 14.1355C11.6976 14.526 12.3308 14.526 12.7213 14.1355L19.1497 7.70711C19.3373 7.51957 19.4426 7.26522 19.4426 7C19.4426 6.44772 18.9949 6 18.4142 6Z" fill="currentColor" transform="rotate(90 12 12)"/>
@@ -96,6 +96,7 @@
         const container = document.getElementById('progress-container');
         const currentTimeEl = document.getElementById('current-time');
         const durationEl = document.getElementById('duration');
+        const playingGif = document.getElementById('playing-gif');
 
         // Load song
         async function loadSong(id) {
@@ -122,7 +123,6 @@
                 audio.play();
                 playIcon.style.display = 'none';
                 pauseIcon.style.display = 'inline';
-
             }
         });
         pauseIcon.addEventListener('click',()=>{
