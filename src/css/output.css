@@ -425,6 +425,9 @@
   .bg-\[\#7D5EEA\] {
     background-color: #7D5EEA;
   }
+  .bg-\[\#B5C0D0\] {
+    background-color: #B5C0D0;
+  }
   .bg-\[\#C1E2FE\] {
     background-color: #C1E2FE;
   }
@@ -433,6 +436,12 @@
   }
   .bg-\[\#FBEEE5\] {
     background-color: #FBEEE5;
+  }
+  .bg-\[\#FDF7F4\] {
+    background-color: #FDF7F4;
+  }
+  .bg-\[FDF7F4\] {
+    background-color: FDF7F4;
   }
   .bg-blue-500 {
     background-color: var(--color-blue-500);
