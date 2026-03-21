@@ -47,7 +47,7 @@
             <svg id="play-icon" width="32px" height="32px" viewBox="0 0 24 24" fill="#2563EB" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8 5V19L19 12L8 5Z" fill="#2563EB"/>
             </svg>
-            <svg id="pause-icon" class="hidden" width="32px" height="32px" viewBox="0 0 24 24" fill="#2563EB" xmlns="http://www.w3.org/2000/svg">
+            <svg id="pause-icon"  width="32px" height="32px" viewBox="0 0 24 24" fill="#2563EB" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 19H10V5H6V19ZM14 5V19H18V5H14Z" fill="#2563EB"/>
             </svg>
         </div>
@@ -84,116 +84,83 @@
     </div>
 
     <script>
-        // Use URL parameters to get the unique Song ID
-        const urlParams = new URLSearchParams(window.location.search);
-        const songId = urlParams.get('id');
+        // Get song ID
+        const songId = new URLSearchParams(window.location.search).get('id');
 
-        // Elements on the page
-        const audioPlayer = document.getElementById('main-audio');
-        const playPauseBtn = document.getElementById('play-pause-btn');
+        // Elements
+        const audio = document.getElementById('main-audio');
+        // const btn = document.getElementById('play-pause-btn');
         const playIcon = document.getElementById('play-icon');
         const pauseIcon = document.getElementById('pause-icon');
-        const progressBar = document.getElementById('progress-bar');
-        const progressContainer = document.getElementById('progress-container');
-        const currentTimeDisplay = document.getElementById('current-time');
-        const durationDisplay = document.getElementById('duration');
+        const bar = document.getElementById('progress-bar');
+        const container = document.getElementById('progress-container');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
 
-        // Function to fetch song details and start playing
-        async function loadSongDetails(id) {
-            try {
-                const response = await fetch(`https://itunes.apple.com/lookup?id=${id}`);
-                const data = await response.json();
-                
-                if (data.results.length > 0) {
-                    const song = data.results[0];
-                    
-                    // Update text and images
-                    document.getElementById('song-name').textContent = song.trackName;
-                    document.getElementById('song-artist').textContent = song.artistName;
-                    
-                    const highResArtwork = song.artworkUrl100.replace('100x100bb', '200x200bb');
-                    document.getElementById('song-artwork').src = highResArtwork;
-                    
-                    // Load and play the audio
-                    audioPlayer.src = song.previewUrl;
-                    audioPlayer.play().catch(() => console.log("User interaction required to play"));
-                    
-                    updatePlayerIcons(true); // Song is playing, show play icon
-                } else {
-                    document.getElementById('song-name').textContent = "Song not found";
-                }
-            } catch (error) {
-                console.error("Error loading song details:", error);
-                document.getElementById('song-name').textContent = "Connection Error";
+        // Load song
+        async function loadSong(id) {
+            let res = await fetch(`https://itunes.apple.com/lookup?id=${id}`);
+            let data = await res.json();
+
+            if (data.results.length) {
+                let s = data.results[0];
+
+                document.getElementById('song-name').innerText = s.trackName;
+                document.getElementById('song-artist').innerText = s.artistName;
+                document.getElementById('song-artwork').src = s.artworkUrl100.replace('100x100bb','200x200bb');
+
+                audio.src = s.previewUrl;
+                audio.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'inline';
             }
         }
 
-        // Handle Play and Pause button click
-        playPauseBtn.onclick = function() {
-            if (!audioPlayer.src) return;
+        // Play / Pause
+        playIcon.addEventListener('click',()=>{
+            if(audio.paused || audio.currentTime<=0){
+                audio.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'inline';
 
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                updatePlayerIcons(true);
-            } else {
-                audioPlayer.pause();
-                updatePlayerIcons(false);
             }
-        };
+        });
+        pauseIcon.addEventListener('click',()=>{
+            if(!audio.paused){
+                audio.pause();
+                playIcon.style.display = 'inline';
+                pauseIcon.style.display = 'none';
 
-        // Update the progress bar while the song plays
-        audioPlayer.ontimeupdate = function() {
-            if (audioPlayer.duration) {
-                const percentage = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-                progressBar.style.width = percentage + "%";
-                currentTimeDisplay.textContent = formatTime(audioPlayer.currentTime);
             }
+        });
+        // Progress + Timer update
+        audio.ontimeupdate = () => {
+            // Progress bar
+            bar.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+
+            // Current time
+            currentTimeEl.innerText = format(audio.currentTime);
         };
 
-        // Show the total duration once the song data loads
-        audioPlayer.onloadedmetadata = function() {
-            durationDisplay.textContent = formatTime(audioPlayer.duration);
+        // Duration set
+        audio.onloadedmetadata = () => {
+            durationEl.innerText = format(audio.duration);
         };
 
-        // When the song finishes playing
-        audioPlayer.onended = function() {
-            updatePlayerIcons(false);
+        // Seek
+        container.onclick = (e) => {
+            audio.currentTime = (e.offsetX / container.clientWidth) * audio.duration;
         };
 
-        // Skip to different parts of the song by clicking the progress bar
-        progressContainer.onclick = function(e) {
-            if (audioPlayer.duration) {
-                const rect = progressContainer.getBoundingClientRect();
-                const clickX = e.clientX - rect.left;
-                const width = progressContainer.clientWidth;
-                audioPlayer.currentTime = (clickX / width) * audioPlayer.duration;
-            }
-        };
-
-        // Helper function to format time (e.g., 0:30)
-        function formatTime(seconds) {
-            const min = Math.floor(seconds / 60);
-            const sec = Math.floor(seconds % 60);
-            return min + ":" + (sec < 10 ? "0" + sec : sec);
+        // Format time (simple)
+        function format(sec) {
+            let m = Math.floor(sec / 60);
+            let s = Math.floor(sec % 60);
+            return m + ":" + (s < 10 ? "0" + s : s);
         }
 
-        // Switch between icons based on play state
-        function updatePlayerIcons(isPlaying) {
-            if (isPlaying) {
-                // As per request: Show play icon while playing
-                playIcon.classList.remove('hidden');
-                pauseIcon.classList.add('hidden');
-            } else {
-                // As per request: Show pause icon while paused
-                playIcon.classList.add('hidden');
-                pauseIcon.classList.remove('hidden');
-            }
-        }
-
-        // Load the song if the ID exists in the URL
-        if (songId) {
-            loadSongDetails(songId);
-        }
+        // Load song
+        if (songId) loadSong(songId);
     </script>
 </body>
 </html>
