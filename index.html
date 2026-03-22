@@ -158,7 +158,24 @@
         const artist = "Arijit";
         fetchSongs(artist);
 
-        let wishlist = document.getElementById('wishlist');
+        document.getElementById('wishlist').onclick = () => {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            let box = document.getElementById('song-list');
+
+            box.innerHTML = "";
+
+            wishlist.forEach(song => {
+                let img = document.createElement('img');
+                img.src = song.img;
+                img.className = "w-40 h-40 rounded-2xl";
+
+                img.onclick = () => {
+                    window.location.href = "single-song.html?id=" + song.id;
+                };
+
+                box.appendChild(img);
+            });
+        };
     </script>
 </body>
 </html>

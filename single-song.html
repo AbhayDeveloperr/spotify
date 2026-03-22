@@ -56,6 +56,9 @@
         <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" class="cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
             <path d="M18.4142 6C18.1581 6 17.9125 6.10184 17.7314 6.2829L12 12.0143L6.26863 6.2829C6.08754 6.10184 5.84191 6 5.58579 6C5.0335 6 4.58579 6.44772 4.58579 7C4.58579 7.26522 4.69114 7.51957 4.87868 7.70711L11.3071 14.1355C11.6976 14.526 12.3308 14.526 12.7213 14.1355L19.1497 7.70711C19.3373 7.51957 19.4426 7.26522 19.4426 7C19.4426 6.44772 18.9949 6 18.4142 6Z" fill="currentColor" transform="rotate(-90 12 12)"/>
         </svg>
+        <svg class="absolute right-8" id="wishlist-single" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.45067 13.9082L11.4033 20.4395C11.6428 20.6644 11.7625 20.7769 11.9037 20.8046C11.9673 20.8171 12.0327 20.8171 12.0963 20.8046C12.2375 20.7769 12.3572 20.6644 12.5967 20.4395L19.5493 13.9082C21.5055 12.0706 21.743 9.0466 20.0978 6.92607L19.7885 6.52734C17.8203 3.99058 13.8696 4.41601 12.4867 7.31365C12.2913 7.72296 11.7087 7.72296 11.5133 7.31365C10.1304 4.41601 6.17972 3.99058 4.21154 6.52735L3.90219 6.92607C2.25695 9.0466 2.4945 12.0706 4.45067 13.9082Z" stroke="#33363F" stroke-width="2"/>
+        </svg>
     </div>
 
     <audio id="main-audio" src=""></audio>
@@ -73,7 +76,7 @@
                 </svg>
             </div>
             <div class="cursor-pointer">
-                <svg fill="#000000" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 2;"></path></svg>
+                <svg  fill="#000000" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 2;"></path></svg>
             </div>
             <div class="cursor-pointer">
                 <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -161,6 +164,29 @@
 
         // Load song
         if (songId) loadSong(songId);
+
+        document.getElementById('wishlist-single').onclick = () => {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            // check karo already hai ya nahi
+            let already = wishlist.find(item => item.id === songId);
+
+            if (already) {
+                alert("Already added ⚠️");
+                return;
+            }
+
+            wishlist.push({
+                id: songId,
+                name: document.getElementById('song-name').innerText,
+                artist: document.getElementById('song-artist').innerText,
+                img: document.getElementById('song-artwork').src
+            });
+
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+            alert("Added to ❤️");
+        };
     </script>
 </body>
 </html>
