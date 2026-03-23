@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="src/css/output.css">
     <link rel="stylesheet" href="src/css/style.css">
+    <style>.liked{background:red !important;}</style>
 </head>
 <body class="bg-[#F0FFDF] pb-32">
     <div>
@@ -184,6 +185,7 @@
             });
 
             localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            document.getElementById('whishlist-single').classList.add('liked');
 
             alert("Added to ❤️");
         };
