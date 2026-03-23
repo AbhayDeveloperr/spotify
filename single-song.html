@@ -7,9 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="src/css/output.css">
     <link rel="stylesheet" href="src/css/style.css">
-    <style>.liked{background:red !important;}</style>
+    <!-- <style>.liked{background:red !important;}</style> -->
 </head>
-<body class="bg-[#F0FFDF] pb-32">
+<body class="bg-[#F7F6E5] pb-32">
     <div>
         <svg onclick="window.history.back()" width="25px" height="25px" viewBox="0 0 1024 1024" fill="#000000" class="icon cursor-pointer m-4" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z" fill="" />
@@ -38,6 +38,9 @@
     </div>
 
     <div class="flex justify-center py-4 gap-8 items-center">
+        <svg fill="#000000" class="absolute left-8" id="loop-btn" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.70710678,18 L6.85355339,20.1464466 C7.04881554,20.3417088 7.04881554,20.6582912 6.85355339,20.8535534 C6.65829124,21.0488155 6.34170876,21.0488155 6.14644661,20.8535534 L3.14644661,17.8535534 C2.95118446,17.6582912 2.95118446,17.3417088 3.14644661,17.1464466 L6.14644661,14.1464466 C6.34170876,13.9511845 6.65829124,13.9511845 6.85355339,14.1464466 C7.04881554,14.3417088 7.04881554,14.6582912 6.85355339,14.8535534 L4.70710678,17 L18.5,17 C19.3284271,17 20,16.3284271 20,15.5 L20,12.5 C20,12.2238576 20.2238576,12 20.5,12 C20.7761424,12 21,12.2238576 21,12.5 L21,15.5 C21,16.8807119 19.8807119,18 18.5,18 L4.70710678,18 Z M19.2928932,7 L17.1464466,4.85355339 C16.9511845,4.65829124 16.9511845,4.34170876 17.1464466,4.14644661 C17.3417088,3.95118446 17.6582912,3.95118446 17.8535534,4.14644661 L20.8535534,7.14644661 C21.0488155,7.34170876 21.0488155,7.65829124 20.8535534,7.85355339 L17.8535534,10.8535534 C17.6582912,11.0488155 17.3417088,11.0488155 17.1464466,10.8535534 C16.9511845,10.6582912 16.9511845,10.3417088 17.1464466,10.1464466 L19.2928932,8 L5.5,8 C4.67157288,8 4,8.67157288 4,9.5 L4,12.5 C4,12.7761424 3.77614237,13 3.5,13 C3.22385763,13 3,12.7761424 3,12.5 L3,9.5 C3,8.11928813 4.11928813,7 5.5,7 L19.2928932,7 Z"/>
+        </svg>
         <!-- Previous Button -->
         <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" class="cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
             <path d="M18.4142 6C18.1581 6 17.9125 6.10184 17.7314 6.2829L12 12.0143L6.26863 6.2829C6.08754 6.10184 5.84191 6 5.58579 6C5.0335 6 4.58579 6.44772 4.58579 7C4.58579 7.26522 4.69114 7.51957 4.87868 7.70711L11.3071 14.1355C11.6976 14.526 12.3308 14.526 12.7213 14.1355L19.1497 7.70711C19.3373 7.51957 19.4426 7.26522 19.4426 7C19.4426 6.44772 18.9949 6 18.4142 6Z" fill="currentColor" transform="rotate(90 12 12)"/>
@@ -57,14 +60,14 @@
         <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" class="cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
             <path d="M18.4142 6C18.1581 6 17.9125 6.10184 17.7314 6.2829L12 12.0143L6.26863 6.2829C6.08754 6.10184 5.84191 6 5.58579 6C5.0335 6 4.58579 6.44772 4.58579 7C4.58579 7.26522 4.69114 7.51957 4.87868 7.70711L11.3071 14.1355C11.6976 14.526 12.3308 14.526 12.7213 14.1355L19.1497 7.70711C19.3373 7.51957 19.4426 7.26522 19.4426 7C19.4426 6.44772 18.9949 6 18.4142 6Z" fill="currentColor" transform="rotate(-90 12 12)"/>
         </svg>
-        <svg class="absolute right-8" id="wishlist-single" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="absolute right-8" id="wishlist-single" class="bg-red-800" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.45067 13.9082L11.4033 20.4395C11.6428 20.6644 11.7625 20.7769 11.9037 20.8046C11.9673 20.8171 12.0327 20.8171 12.0963 20.8046C12.2375 20.7769 12.3572 20.6644 12.5967 20.4395L19.5493 13.9082C21.5055 12.0706 21.743 9.0466 20.0978 6.92607L19.7885 6.52734C17.8203 3.99058 13.8696 4.41601 12.4867 7.31365C12.2913 7.72296 11.7087 7.72296 11.5133 7.31365C10.1304 4.41601 6.17972 3.99058 4.21154 6.52735L3.90219 6.92607C2.25695 9.0466 2.4945 12.0706 4.45067 13.9082Z" stroke="#33363F" stroke-width="2"/>
         </svg>
     </div>
 
     <audio id="main-audio" src=""></audio>
 
-    <div class="fixed bottom-0 w-full bg-[#F0FFDF] border-t border-gray-100">
+    <div class="fixed bottom-0 w-full bg-[#F5F5F5] border-t border-gray-100">
         <div class="px-5 py-7 flex justify-between">
             <div class="cursor-pointer" onclick="window.location.href='index.html'">
                 <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +96,6 @@
 
         // Elements
         const audio = document.getElementById('main-audio');
-        // const btn = document.getElementById('play-pause-btn');
         const playIcon = document.getElementById('play-icon');
         const pauseIcon = document.getElementById('pause-icon');
         const bar = document.getElementById('progress-bar');
@@ -166,6 +168,7 @@
         // Load song
         if (songId) loadSong(songId);
 
+        //Wishlist ko implement
         document.getElementById('wishlist-single').onclick = () => {
             let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
@@ -185,10 +188,45 @@
             });
 
             localStorage.setItem('wishlist', JSON.stringify(wishlist));
-            document.getElementById('wishlist-single').classList.add('liked');
-
             alert("Added to ❤️");
+
+            let heart = document.querySelector('#wishlist-single path');
+            heart.setAttribute('fill', 'red');
         };
+
+        //Check Wishlist
+        function checkWishlist() {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            let already = wishlist.find(item => item.id === songId);
+
+            let heart = document.querySelector('#wishlist-single path');
+
+            if (already) {
+                heart.setAttribute('fill', 'red');
+            } else {
+                heart.setAttribute('fill', 'none'); // ya black
+            }
+        };
+        checkWishlist();
+
+
+        //loop 
+        let isLoop = false;
+
+        const loopBtn = document.getElementById('loop-btn');
+        loopBtn.onclick = () => {
+            isLoop = !isLoop;         //toggle
+            if (isLoop) {
+                audio.loop = true;
+                loopBtn.style.fill = "blue"; // active color
+            } else {
+                audio.loop = false;
+                loopBtn.style.fill = "black"; // normal color
+                }
+            };
+            audio.loop = true;
+                    
     </script>
 </body>
 </html>

@@ -51,6 +51,14 @@
                 <img src="src/Images/Honey-Singhavif" class="rounded-full w-10 h-10 object-cover" alt="">
                 <p class="text-white text-sm truncate max-w-[120px]">Honey Singh</p>
             </div>
+            <div onclick="window.location.href='song-list.html?query=Atif Aslam'" class="bg-amber-900 flex rounded-full py-2 px-3 cursor-pointer items-center gap-2 flex-shrink-0 max-w-full">
+                <img src="src/Images/atif.jpg" class="rounded-full w-10 h-10 object-cover" alt="">
+                <p class="text-white text-sm truncate max-w-[120px]">Atif Aslam</p>
+            </div>
+            <div onclick="window.location.href='song-list.html?query=Karan Aujla'" class="bg-indigo-900 flex rounded-full py-2 px-3 cursor-pointer items-center gap-2 flex-shrink-0 max-w-full">
+                <img src="src/Images/karan-aujla.jpg" class="rounded-full w-10 h-10 object-cover" alt="">
+                <p class="text-white text-sm truncate max-w-[120px]">Karan Aujla</p>
+            </div>
 
         </div>
         <p class="px-5 text-2xl font-semibold">Trending</p>
@@ -120,7 +128,7 @@
         });
         
         async function fetchSongs(search) {
-            const url = `https://itunes.apple.com/search?term=${encodeURIComponent(search)}&media=music&entity=song&limit=5`;
+            const url = `https://itunes.apple.com/search?term=${encodeURIComponent(search)}&media=music&entity=song&limit=20`;
             
             try {
                 const response = await fetch(url);
