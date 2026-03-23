@@ -96,7 +96,7 @@
                     <path d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
                     <path d="M15 18H9" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
-                <p>Home</p>
+                <p></p>
             </div>
             <div class="cursor-pointer" onclick="window.location.href='song-list.html'">
                 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,10 +106,10 @@
                 <path opacity="0.4" d="M7.24 13.4302H5.34C3.15 13.4302 2 14.5802 2 16.7602V18.6602C2 20.8502 3.15 22.0002 5.33 22.0002H7.23C9.41 22.0002 10.56 20.8502 10.56 18.6702V16.7702C10.57 14.5802 9.42 13.4302 7.24 13.4302Z" fill="#292D32"/>
                 </svg>
             </div>
-            <div class="cursor-pointer">
+            <a href="wishlist.html" class="cursor-pointer" >
                 <svg id="wishlist" fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" id="favourite-alt" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path id="primary" d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
                 </svg>
-            </div>
+            </a>
             <div class="cursor-pointer">
                 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -165,25 +165,6 @@
 
         const artist = "Arijit";
         fetchSongs(artist);
-
-        document.getElementById('wishlist').onclick = () => {
-            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-            let box = document.getElementById('song-list');
-
-            box.innerHTML = "";
-
-            wishlist.forEach(song => {
-                let img = document.createElement('img');
-                img.src = song.img;
-                img.className = "w-40 h-40 rounded-2xl";
-
-                img.onclick = () => {
-                    window.location.href = "single-song.html?id=" + song.id;
-                };
-
-                box.appendChild(img);
-            });
-        };
     </script>
 </body>
 </html>
