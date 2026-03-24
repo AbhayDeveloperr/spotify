@@ -54,7 +54,7 @@
         let box = document.getElementById('song-list');
 
         box.innerHTML = wishlist.map(song => `
-        <div class="flex items-center justify-between pb-2 hover:bg-gray-100 transition-colors p-2 rounded-xl cursor-pointer" onclick="window.location.href='single-song.html?id=1073359419'">
+        <div class="flex items-center justify-between pb-2 hover:bg-gray-100 transition-colors p-2 rounded-xl cursor-pointer" onclick="window.location.href='single-song.html?id=${song.id}'">
                         <div class="flex items-center">
                             <img src="${song.img}" class="rounded-lg w-12 h-12 object-cover shadow-sm">
                             <div class="pl-3">
