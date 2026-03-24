@@ -176,9 +176,7 @@
             let already = wishlist.find(item => item.id === songId);
 
             if (already) {
-                localstorage.removeItem.wishlist.id;
-                alert("removed");
-                return;
+                removeSong(song.id);0
             }
 
             wishlist.push({
@@ -211,7 +209,17 @@
         };
         checkWishlist();
 
+//remove song from wishlist
+function removeSong(songId) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
+    wishlist = wishlist.filter(item => item.id !== songId);
+
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+    alert("Song removed ❌");
+}
+        
         //loop 
         let isLoop = false;
 
