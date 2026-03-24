@@ -3,23 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WishList</title>
+    <title>UserInfo</title>
     <link rel="stylesheet" href="src/css/output.css">
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-    <div class="py-6 px-3">
-        <p class="font-bold">Wishlisted Songs</p>
-        <div id="song-list" class=" pt-6">
-            <div class="song-template" class="flex items-center py-3">
-                <img class="song-artwork w-40 h-40 rounded-2xl cursor-pointer" src="https://placehold.co/200x200" class="cursor-pointer" alt="">
-                <div class="px-5">
-                    <p class="">Song name ....</p>
-                    <p>artist...</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <form id="myForm" class="py-7 px-4 hidden">
+        <input type="text" id="nameInput" class="border p-1 rounded-sm" placeholder="Enter Your Name..." required >
+        <button type="submit" class="border bg-amber-50 px-2 py-1 rounded-md font-medium text-base">Submit</button>
+    </form>
+    <p id="userNameDisplay" class="text-center mt-4 font-semibold text-lg"></p>
     <div class="fixed bottom-0 w-full bg-[#F5F5F5]">
         <div class="px-5 py-7 flex justify-between">
             <div class="flex text-sm gap-1 rounded-2xl px-2 cursor-pointer" onclick="window.location.href='index.html'">
@@ -37,35 +30,54 @@
                 <path opacity="0.4" d="M7.24 13.4302H5.34C3.15 13.4302 2 14.5802 2 16.7602V18.6602C2 20.8502 3.15 22.0002 5.33 22.0002H7.23C9.41 22.0002 10.56 20.8502 10.56 18.6702V16.7702C10.57 14.5802 9.42 13.4302 7.24 13.4302Z" fill="#292D32"/>
                 </svg>
             </div>
-            <div class="cursor-pointer">
+            <div class="cursor-pointer" onclick="window.location.href='wishlist.html'">
                 <svg id="wishlist" width="20px" height="20px" viewBox="0 0 24 24" id="favourite-alt" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
-                    <path id="primary" fill="currentColor" d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: red; stroke: rgb(183, 25, 25); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+                    <path id="primary" fill="currentColor" d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: none; stroke: rgb(30, 28, 28); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
                 </svg>
             </div>
-            <div class="cursor-pointer" onclick="window.location.href='userInfo.html'">
-                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <div class="cursor-pointer">
+                <svg id="userInfo" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
         </div>
-    </div>
-    <script>
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        let box = document.getElementById('song-list');
-
-        box.innerHTML = wishlist.map(song => `
-        <div class="flex items-center justify-between pb-6 hover:bg-gray-100 transition-colors p-2 rounded-xl cursor-pointer" onclick="window.location.href='single-song.html?id=${song.id}'">
-                        <div class="flex items-center">
-                            <img src="${song.img}" class="rounded-lg w-12 h-12 object-cover shadow-sm">
-                            <div class="pl-3">
-                                <p class="font-medium text-sm text-gray-800 truncate w-48">${song.name}</p>
-                                <p class="text-xs text-gray-500 truncate w-48">${song.artist}</p>
-                            </div>
-                        </div>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#1C274C" class="cursor-pointer">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"></path>
-                        </svg>
-                    </div>`).join('');
-    </script>
 </body>
+<script>
+    const userInfobtn = document.getElementById('userInfo');
+    const form = document.getElementById('myForm');
+    const input = document.getElementById('nameInput');
+    const display = document.getElementById('userNameDisplay');
+
+    // Page load pe check karo
+    let savedName = localStorage.getItem("username");
+    if (savedName) {
+        display.innerText = "Hello, " + savedName + " 👋";
+    }
+
+    // Button click
+    userInfobtn.onclick = () => {
+        let name = localStorage.getItem("username");
+
+        if (name) {
+            // naam show karo (alert nahi)
+            display.innerText = "Welcome back, " + name + "";
+        } else {
+            form.classList.remove("hidden");
+        }
+    };
+
+    // Form submit
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let name = input.value;
+
+        localStorage.setItem("username", name);
+
+        display.innerText = "Hello, " + name + " 👋";
+
+        form.classList.add("hidden");
+        input.value = "";
+    });
+</script>
 </html>

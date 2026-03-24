@@ -86,12 +86,12 @@
             </div>
             <div class="cursor-pointer" onclick="window.location.href='wishlist.html'">
                 <svg id="wishlist" width="20px" height="20px" viewBox="0 0 24 24" id="favourite-alt" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
-                    <path id="primary" fill="currentColor" d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: red; stroke: rgb(183, 25, 25); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+                    <path id="primary" fill="" d="M21,9c0,8.18-9,12-9,12S3,17.22,3,9A4.79,4.79,0,0,1,7.5,4,4.79,4.79,0,0,1,12,9a4.79,4.79,0,0,1,4.5-5A4.79,4.79,0,0,1,21,9Z" style="fill: none; stroke: rgb(53, 45, 45); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
                 </svg>
             </div>
-            <div class="cursor-pointer">
+            <div class="cursor-pointer" onclick="window.location.href='userInfo.html'">
                 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
         </div>
@@ -172,6 +172,26 @@
 
         // Load song
         if (songId) loadSong(songId);
+        setRandomBackground();
+
+        //Random Background
+        function setRandomBackground() {
+            const colors = [
+                "#F7F6E5",
+                "#FFE4E1",
+                "#E0F7FA",
+                "#E8F5E9",
+                "#FFF3E0",
+                "#E3F2FD",
+                "#FCE4EC",
+                "#F3E5F5",
+                "#EDE7F6"
+            ];
+
+            let randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.background = randomColor;
+        }
+
 
         //Wishlist ko implement
         document.getElementById('wishlist-single').onclick = () => {
