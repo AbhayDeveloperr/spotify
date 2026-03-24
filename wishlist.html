@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-    <div class="py-6 px-6">
+    <div class="py-6 px-3">
         <p class="font-bold">Wishlisted Songs</p>
         <div id="song-list" class=" pt-6">
             <div class="song-template" class="flex items-center py-3">
@@ -20,14 +20,14 @@
             </div>
         </div>
     </div>
-     <div class="fixed bottom-0 w-full bg-[#F5F5F5]">
+    <div class="fixed bottom-0 w-full bg-[#F5F5F5]">
         <div class="px-5 py-7 flex justify-between">
             <div class="flex text-sm gap-1 rounded-2xl px-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
                     <path d="M15 18H9" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
-                <p>Home</p>
+                <p></p>
             </div>
             <div class="cursor-pointer" onclick="window.location.href='song-list.html'">
                 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +54,7 @@
         let box = document.getElementById('song-list');
 
         box.innerHTML = wishlist.map(song => `
-        <div class="flex items-center justify-between pb-2 hover:bg-gray-100 transition-colors p-2 rounded-xl cursor-pointer" onclick="window.location.href='single-song.html?id=${song.id}'">
+        <div class="flex items-center justify-between pb-6 hover:bg-gray-100 transition-colors p-2 rounded-xl cursor-pointer" onclick="window.location.href='single-song.html?id=${song.id}'">
                         <div class="flex items-center">
                             <img src="${song.img}" class="rounded-lg w-12 h-12 object-cover shadow-sm">
                             <div class="pl-3">
