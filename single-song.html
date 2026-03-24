@@ -176,7 +176,8 @@
             let already = wishlist.find(item => item.id === songId);
 
             if (already) {
-                alert("Already added ⚠️");
+                localstorage.removeItem.wishlist.id;
+                alert("removed");
                 return;
             }
 
